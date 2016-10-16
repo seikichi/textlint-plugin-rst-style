@@ -37,7 +37,7 @@ Hello, world!
 
 .. code-block:: javascript
 
-    console.lor('Hello, world!')
+    console.log('Hello, world!')
 EOF
 $ textlint index.rst
 

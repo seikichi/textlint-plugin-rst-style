@@ -55,7 +55,7 @@ export default {
         if (firstChild.blanklines.length > 0) {
           return;
         }
-        context.report(node, new context.RuleError('blank lines after section'));
+        context.report(firstChild, new context.RuleError('blank lines after section'));
       },
     }),
     'indent-width': context => ({
@@ -82,7 +82,12 @@ export default {
         if (!node.indent || node.indent.offset === 3) {
           return;
         }
-        context.report(node.children[0], new context.RuleError('Use 3 spaces per indentation level (directive).'));
+        for (let child of node.children) {
+          if (child.loc.start.line !== node.loc.start.line) {
+            context.report(child, new context.RuleError('Use 3 spaces per indentation level (directive).'));
+            return;
+          }
+        }
       },
     }),
   },

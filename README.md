@@ -8,7 +8,7 @@ This plugin only focuses on conding style like [markdownlint](https://github.com
 ## Installation
 
 ```sh
-> npm install textlint-plugin-rst-style
+> npm install git+https://github.com/seikichi/textlint-plugin-rst-style
 ```
 
 ## Usage

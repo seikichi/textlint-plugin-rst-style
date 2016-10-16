@@ -63,25 +63,26 @@ export default {
         if (node.indent.offset === 2) {
           return;
         }
-        context.report(node, new context.RuleError('Use 2 spaces per indentation level (block_quote).'));
+        context.report(node.children[0], new context.RuleError('Use 2 spaces per indentation level (block_quote).'));
       },
       definition_list_item: node => {
         if (node.indent.offset === 2) {
           return;
         }
-        context.report(node, new context.RuleError('Use 2 spaces per indentation level (definition_list_item).'));
+        const definition = node.children[node.children.length - 1];
+        context.report(definition, new context.RuleError('Use 2 spaces per indentation level (definition_list_item).'));
       },
       comment: node => {
         if (!node.indent || node.indent.offset === 3) {
           return;
         }
-        context.report(node, new context.RuleError('Use 3 spaces per indentation level (comment).'));
+        context.report(node.children[0], new context.RuleError('Use 3 spaces per indentation level (comment).'));
       },
       directive: node => {
         if (!node.indent || node.indent.offset === 3) {
           return;
         }
-        context.report(node, new context.RuleError('Use 3 spaces per indentation level (directive).'));
+        context.report(node.children[0], new context.RuleError('Use 3 spaces per indentation level (directive).'));
       },
     }),
   },

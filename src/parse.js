@@ -4,7 +4,11 @@ import map from 'unist-util-map';
 import restructured from 'restructured';
 
 export default function parse(rst) {
-  const ast = restructured.parse(rst, { position: true });
+  const ast = restructured.parse(rst, {
+    blanklines: true,
+    indent: true,
+    position: true,
+  });
   const src = new StructuredSource(rst);
 
   return map(ast, node => {
